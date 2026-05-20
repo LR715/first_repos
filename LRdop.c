@@ -90,7 +90,7 @@ int main() {
     TreeNode *tree = NULL;
     for (int i = 0; i < point_count; i++) {
         record_t cur = get_k(list, i);
-        int h = (int)cur.alt_m;
+        float h = cur.alt_m;
         if (tree == NULL) {
             tree = createNode(h);
         } else {
@@ -101,12 +101,12 @@ int main() {
     // Находим минимум
     TreeNode *p = tree;
     while (p->left) p = p->left;
-    int min_h = p->value;
+    float min_h = p->value;
 
     // Находим максимум
     p = tree;
     while (p->right) p = p->right;
-    int max_h = p->value;
+    float max_h = p->value;
 
     // Считаем время полёта
     double t0 = get_k(list, 0).timestamp_ms;
@@ -116,16 +116,16 @@ int main() {
     // Вывод
     printf("number of points: %d\n", point_count);
     printf("duration: %.3f s\n", flight_time);
-    printf("min height: %d m\n", min_h);
-    printf("max height: %d m\n", max_h);
+    printf("min height: %.3f m\n", min_h);
+    printf("max height: %.3f m\n", max_h);
 
     // Запись в stats1.txt
     FILE *out = fopen("stats1.txt", "w");
     if (out) {
         fprintf(out, "Количество точек: %d\n", point_count);
         fprintf(out, "Продолжительность: %.3f сек\n", flight_time);
-        fprintf(out, "Мин высота: %d м\n", min_h);
-        fprintf(out, "Макс высота: %d м\n", max_h);
+        fprintf(out, "Мин высота: %.3f м\n", min_h);
+        fprintf(out, "Макс высота: %.3f м\n", max_h);
         fclose(out);
     }
 

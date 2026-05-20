@@ -1,7 +1,7 @@
 #include "binary_tree.h"
 
 // Функция для создания нового узла
-TreeNode* createNode(int value) {
+TreeNode* createNode(float value) {
     TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
     if (!newNode) {
         perror("Memory allocation failed");
@@ -14,7 +14,7 @@ TreeNode* createNode(int value) {
 }
 
 // Функция для добавления узла в дерево
-TreeNode* append(TreeNode* root, int value) {
+TreeNode* append(TreeNode* root, float value) {
     if (root == NULL) {
         return createNode(value);
     }
@@ -31,7 +31,7 @@ void preoder(TreeNode* root) {
     if (root == NULL) {
         return;
     }
-    printf("%d ", root->value);
+    printf("%f ", root->value);
     preoder(root->left);
     preoder(root->right);
 }
@@ -42,7 +42,7 @@ void LNR_Traversal(TreeNode* root) {
         return;
     }
     LNR_Traversal(root->left);
-    printf("%d ", root->value);
+    printf("%f ", root->value);
     LNR_Traversal(root->right);
 }
 
@@ -52,7 +52,7 @@ void RNL_Traversal(TreeNode* root) {
         return;
     }
     RNL_Traversal(root->right);
-    printf("%d ", root->value);
+    printf("%f ", root->value);
     RNL_Traversal(root->left);
 }
 
@@ -69,7 +69,7 @@ void levelOrderTraversal(TreeNode* root) {
 
     while (front < rear) {
         TreeNode* curr = queue[front++]; // Извлекаем узел
-        printf("%d ", curr->value);       // Печатаем значение узла
+        printf("%f ", curr->value);       // Печатаем значение узла
 
         if (curr->left != NULL) {
             queue[rear++] = curr->left;   // Добавляем левого потомка в очередь

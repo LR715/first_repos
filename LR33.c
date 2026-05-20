@@ -33,7 +33,7 @@ int main() {
     TreeNode *tree = NULL;
     for (int i = 0; i < count; i++) {
         record_t cur = get_k(list, i);// получаем i-ю структуру из списка
-        int h = (int)cur.alt_m; // приводим высоту к целому типу
+        float h = cur.alt_m;
         if (tree == NULL) {
             tree = createNode(h);// если дерево пусто Ч создаЄм корень
         } else {
@@ -44,12 +44,12 @@ int main() {
     // находим минимум Ч спускаемс€ влево
     TreeNode *p = tree;
     while (p->left) p = p->left; // доходим до самого левого элемента
-    int min_h = p->value;  // это минимальна€ высота
+    float min_h = p->value;  // это минимальна€ высота
 
     // находим максимум Ч спускаемс€ вправо
     p = tree;
     while (p->right) p = p->right;
-    int max_h = p->value;
+    float max_h = p->value;
 
     // считаем врем€ полЄта
     double t0 = get_k(list, 0).timestamp_ms;
@@ -59,16 +59,16 @@ int main() {
     // вывод
     printf("number of points: %d\n", count);
     printf("duration: %.3f s\n", flight_time);
-    printf("min height: %d m\n", min_h);
-    printf("max height: %d m\n", max_h);
+    printf("min height: %.3f m\n", min_h);
+    printf("max height: %.3f m\n", max_h);
 
     // в файл
     FILE *out = fopen("stats.txt", "w");
     if (out) {
         fprintf(out, " оличество точек: %d\n", count);
         fprintf(out, "ѕродолжительность: %.3f сек\n", flight_time);
-        fprintf(out, "ћин высота: %d м\n", min_h);
-        fprintf(out, "ћакс высота: %d м\n", max_h);
+        fprintf(out, "ћин высота: %.3f м\n", min_h);
+        fprintf(out, "ћакс высота: %.3f м\n", max_h);
         fclose(out);
     }
 

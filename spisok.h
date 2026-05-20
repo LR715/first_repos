@@ -28,8 +28,8 @@ typedef struct List {
 
 // Прототипы функций
 List* create_list(void);
-void add_k(List* list, record_t value, int k);
-record_t get_k(List* list, int k);
+void add_k(List* list, record_t value, float k);
+record_t get_k(List* list, float k);
 int get_count(List* list);
 void destroy_list(List* list);
 void print_list(List* list);

@@ -12,7 +12,7 @@ List* create_list(void) {
 }
 
 // Функция для добавления элемента в список по индексу
-void add_k(List* list, record_t value, int k) {
+void add_k(List* list, record_t value, float k) {
     if (!list || k < 0 || k > list->size) return;
 
     Node* new_node = (Node*)malloc(sizeof(Node));
@@ -42,7 +42,7 @@ void add_k(List* list, record_t value, int k) {
 }
 
 // Функция для получения записи по индексу
-record_t get_k(List* list, int k) {
+record_t get_k(List* list, float k) {
     static record_t dummy = {0}; // Возврат "пустой" записи в случае ошибки
     if (!list || k < 0 || k >= list->size) return dummy;
     Node* curr = list->head;
